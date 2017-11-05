@@ -1,4 +1,6 @@
-const makeProfilePrompt = `Please setup your profile with ${global.admin.prefix}me set (platform) (id)`;
+const config = require('../config');
+
+const makeProfilePrompt = `Please setup your profile with ${config.prefix}me set (platform) (id)`;
 
 class PlayerProfileNotFoundError extends Error {
   constructor (memberID) {

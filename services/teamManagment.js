@@ -24,6 +24,10 @@ function getAllRanks (players) {
 }
 
 module.exports = {
+  createTeamInitial (teamName, captain) {
+    return db.createTeam(teamName, captain)
+  },
+
   createTeamWithAllPlayers (teamName, captain, players) {
     return getAllRanks([captain, ...players])
       .then(rankObjects => _.map(rankObjects, 'ranked3v3MMR'))
@@ -34,10 +38,10 @@ module.exports = {
 
   getAllPlayersByTeamName (teamName) {
     return db.getTeamByTeamName(teamName)
-      .then(team => _.pull([captain, playerTwo, playerThree, playerFour], null)
+      .then(team => _.pull([team.captain, team.playerTwo, team.playerThree, team.playerFour], null));
   },
 
   updateTeamDivision (teamName) {
-    this.
-  }
+
+  },
 };

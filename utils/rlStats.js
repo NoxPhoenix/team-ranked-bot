@@ -66,7 +66,7 @@ function isValidCache (rankCache, allowance = 0.03) {
 }
 
 function getPlayerProfile (discordID) {
-  return cache.getPlayerProfileFromDiscorID(discordID);
+  return cache.getPlayerProfileFromDiscorId(discordID);
 }
 
 module.exports = {
@@ -89,9 +89,7 @@ module.exports = {
     const { id: discordID } = member;
     if (!validPlatform(platform)) return Promise.reject(new Error(`${platform} is not a valid platform`));
     return lookupRank(platform, id)
-      .then(() => {
-        return cache.getPlayerProfileFromDiscorID(discordID);
-      })
+      .then(() => cache.getPlayerProfileFromDiscorId(discordID))
       .then((playerProfile) => {
         if (playerProfile !== undefined) return cache.updatePlayerProfile(discordID, platform, id);
         return cache.createPlayerProfile(member, platform, id);

@@ -4,7 +4,8 @@
   "description": "A bot to track ranks for team based queueing.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bot": "nodemon app.js"
   },
   "author": "NoxPhoenix",
   "license": "ISC",

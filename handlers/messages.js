@@ -1,19 +1,20 @@
+const config = require('../config');
 const messages = require('../lib/messages');
 
 function callCommand (message) {
   return messages.commands.run(message);
 }
 
-function moderate (message) {
-  messages.moderation.run(message);
-}
+// function moderate (message) {
+//   messages.moderation.run(message);
+// }
 
 class MessageHandler {
   constructor (bot) {
     this.bot = bot;
     this.bot.on('message', (message) => {
       const { content } = message;
-      moderate(message);
+      // moderate(message);
       switch (true) {
         case (message.author.bot || message.channel.type !== 'text'): return;
         case (content.startsWith(config.prefix)):
